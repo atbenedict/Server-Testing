@@ -22,5 +22,12 @@ describe("recipes model", () => {
       recipe = await Recipes.insert({ name: "salad" });
       expect(recipe.name).toBe("salad");
     });
+
+    it("should return 200 OK when deleting the recipe", async () => {
+      const id = 1;
+      let deleted = await Recipes.remove({ id });
+
+      expect(deleted.status).toBe(200);
+    });
   });
 });

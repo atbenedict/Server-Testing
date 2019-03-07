@@ -2,10 +2,9 @@ const db = require("../data/dbConfig.js");
 
 module.exports = {
   insert,
-  update,
+
   remove,
-  getAll,
-  findById
+  getAll
 };
 
 async function insert(recipe) {
@@ -16,18 +15,12 @@ async function insert(recipe) {
     .first();
 }
 
-async function update(id, changes) {
-  return null;
-}
-
-function remove(id) {
-  return null;
+async function remove(id) {
+  return db("recipes")
+    .where({ id })
+    .delete();
 }
 
 function getAll() {
   return db("recipes");
-}
-
-function findById(id) {
-  return null;
 }
